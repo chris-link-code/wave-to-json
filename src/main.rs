@@ -14,10 +14,12 @@ const DATA: &str = "data";
 
 const WIDTH: u32 = 2000;
 
+//https://www.bilibili.com/video/BV1wG4y1Y7RQ/
+// 用到RMS算法
 fn main() {
     let now = Instant::now();
     // let path = "http://192.168.1.2:8099/2.wav";
-    let path = "./123.wav";
+    let path = "../123.wav";
     let mut wave_to_json = WaveToJson::new(path);
     let result_data = wave_to_json.decode();
     println!("解码时间: {}", now.elapsed().as_millis());
@@ -86,7 +88,7 @@ impl WaveToJson {
 
     fn decode(&mut self) -> Vec<f64> {
 
-        // TODO 飞标准格式解码时，仅提取data后的数据
+        // TODO 非标准格式解码时，仅提取data后的数据
         let mut buf = vec![0u8; 2];
         self.chunk_descriptor = self.read_string(LEN_CHUNK_DESCRIPTOR);
         if !self.chunk_descriptor.eq(RIFF) {
