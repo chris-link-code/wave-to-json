@@ -17,7 +17,7 @@ const WIDTH: u32 = 2000;
 fn main() {
     let now = Instant::now();
     // let path = "http://192.168.1.2:8099/2.wav";
-    let path = "D:\\rust\\wave-to-json\\123.wav";
+    let path = "../123.wav";
     let mut wave_to_json = WaveToJson::new(path);
     let result_data = wave_to_json.decode();
     println!("解码时间: {}", now.elapsed().as_millis());
